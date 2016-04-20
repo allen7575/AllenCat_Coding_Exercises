@@ -1,0 +1,1 @@
+g++ Hanoi.cpp -o Hanoi.exe

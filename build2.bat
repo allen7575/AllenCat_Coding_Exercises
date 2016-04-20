@@ -1,0 +1,1 @@
+g++ Tires.cpp Car.cpp main.cpp -o Car.exe
