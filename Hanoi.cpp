@@ -18,7 +18,7 @@ int main(){
     cout<<"enter disk number:"<<endl;
     cin >> diskNum;
     
-    Hanoi(diskNum,1,2,3);
+    Hanoi(diskNum,1,3,2);
     
     return 0;
 }
