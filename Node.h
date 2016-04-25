@@ -1,5 +1,6 @@
+template <class T>
 class Node{
     public:
-        int Data;
-        Node *next;
+        T data;
+        Node<T> *next;
 };
