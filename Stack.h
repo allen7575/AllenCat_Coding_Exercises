@@ -2,7 +2,7 @@
 #define __STACK_H__
 
 #include "Node.h"
-#define STACK_SIZE 10
+#define STACK_SIZE 100
 
 template <class T>
 class Stack{

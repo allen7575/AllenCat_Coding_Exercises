@@ -32,7 +32,7 @@ void Stack<T>::Push(T inputData){
     node->data = inputData;
     top = node;
     nodeNum +=1;
-    cout<<"push a data: "<<node->data<<endl;
+    //cout<<"push a data: "<<node->data<<endl;
 }
 
 template <class T>
@@ -51,31 +51,32 @@ T Stack<T>::Pop(){
     top = nodeptr;
     nodeNum -=1;
     
-    cout<<"pop a data "<< data<< endl;
+    //cout<<"pop a data "<< data<< endl;
     return data;
 }
 
 template <class T>
 T Stack<T>::Peek(){
+    T temp;
     if(!isEmpty()){
-        cout<<"Peek top data: ";
-        cout<<top->data <<endl;
+        //cout<<"Peek top data: ";
+        //cout<<top->data <<endl;
         return top->data;
     }
-    cout<<"Peek top data: ";
-    cout<<-1 <<endl;
-    return -1;
+    cout<<"error: top data is empty "<<endl;
+    //cout<<-1 <<endl;
+    return temp;
 }
 
 template <class T>
 bool Stack<T>::isFull(){
-    cout<<"Is Stack Full?"<<endl;
+    //cout<<"Is Stack Full?"<<endl;
     return nodeNum > STACK_SIZE;
 }
 
 template <class T>
 bool Stack<T>::isEmpty(){
-    cout<<"Is Stack Empty?"<<endl;
+    //cout<<"Is Stack Empty?"<<endl;
     return nodeNum <= 0;
 }
 

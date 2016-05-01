@@ -1,0 +1,1 @@
+g++ BST.cpp BSTMain.cpp -o BST.exe
