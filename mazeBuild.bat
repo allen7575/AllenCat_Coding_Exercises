@@ -1,0 +1,1 @@
+g++ maze(p34).cpp -o maze(p34).exe
