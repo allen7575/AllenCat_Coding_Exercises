@@ -2,6 +2,7 @@
 #include <utility>
 #include <iostream>
 #include <fstream>
+#include <iomanip>
 
 using namespace std;
 
@@ -13,7 +14,8 @@ typedef pair<int, int> P;
 
 int maze[MAX_N][MAX_M];
 int d[MAX_N][MAX_M];
-int dx=1, dy=1;
+//int dx=1, dy=1;
+P dir[4] = {P(1,0),P(-1,0),P(0,1),P(0,-1)};
 int Sx,Sy,Gx,Gy;
 
 void init(){
@@ -41,6 +43,7 @@ void init(){
         }
         
     }
+    //cout<<endl;
 }
 
 
@@ -50,26 +53,56 @@ int BFS(){
     
     que.push(P(Sx, Sy));
     d[Sx][Sy] = 0;
+  
+    for(int i=0;i<MAX_N*MAX_M;i++){
+      if(d[i/MAX_N][i%MAX_M] == INF) {
+          cout<< "\"-1\"";
+      }else{
+          cout<<"\"" << setfill('0') << setw(2) << d[i/MAX_N][i%MAX_M] <<"\"";
+      }  
+      if(i%MAX_M == MAX_M-1) cout <<'\n';
+    }
     
     while(!que.empty()){
         P posi=que.front();
         que.pop();
         if(posi.first <0 || posi.second <0) continue;
         if(posi.first >= MAX_N || posi.second >= MAX_M) continue;
-        //cout << "("<< posi.first<<","<<posi.second<<")"<<endl;
+        
+        //cout <<"\""<< d[posi.first][posi.second] <<"\"";
+        //cout <<"\""<< d[posi.first+dx][posi.second] <<"\"";
+        //cout <<"\""<< d[posi.first-dx][posi.second] <<"\"";
+        //cout <<"\""<< d[posi.first][posi.second+dy] <<"\"";
+        //cout <<"\""<< d[posi.first][posi.second-dy] <<"\""<<endl;
         switch (maze[posi.first][posi.second]){
             case 'S':
             case '.':
                 maze[posi.first][posi.second] = '#';
-                que.push(P(posi.first+dx,posi.second));
-                que.push(P(posi.first-dx,posi.second));
-                que.push(P(posi.first,posi.second+dy));
-                que.push(P(posi.first,posi.second-dy));
+                //que.push(P(posi.first+dx,posi.second));
+                //que.push(P(posi.first-dx,posi.second));
+                //que.push(P(posi.first,posi.second+dy));
+                //que.push(P(posi.first,posi.second-dy));
+                cout << "("<< posi.first<<","<<posi.second<<")";
                 
-                d[posi.first+dx][posi.second] = min(d[posi.first+dx][posi.second],d[posi.first][posi.second]+1);
-                d[posi.first-dx][posi.second] = min(d[posi.first-dx][posi.second],d[posi.first][posi.second]+1);
-                d[posi.first][posi.second+dy] = min(d[posi.first][posi.second+dy],d[posi.first][posi.second]+1);
-                d[posi.first][posi.second-dy] = min(d[posi.first][posi.second-dy],d[posi.first][posi.second]+1);
+                for(int i=0;i<4;i++){
+                  if(posi.first+dir[i].first <0 || posi.second+dir[i].second<0 || posi.first+dir[i].first>=MAX_N || posi.second+dir[i].second>=MAX_M) {
+                    cout<<"\"##\"";
+                    continue;
+                  }
+                  que.push(P(posi.first+dir[i].first,posi.second+dir[i].second));
+                  d[posi.first+dir[i].first][posi.second+dir[i].second] = min(d[posi.first+dir[i].first][posi.second+dir[i].second],d[posi.first][posi.second]+1);
+                  if(d[posi.first+dir[i].first][posi.second+dir[i].second] == INF) {
+                      cout<< "\"-1\"";
+                  }else{
+                      cout<<"\"" << setfill('0') << setw(2) << d[posi.first+dir[i].first][posi.second+dir[i].second] <<"\"";
+                  }
+                }
+                cout<<endl;
+            
+                //d[posi.first+dx][posi.second] = min(d[posi.first+dx][posi.second],d[posi.first][posi.second]+1);
+                //d[posi.first-dx][posi.second] = min(d[posi.first-dx][posi.second],d[posi.first][posi.second]+1);
+                //d[posi.first][posi.second+dy] = min(d[posi.first][posi.second+dy],d[posi.first][posi.second]+1);
+                //d[posi.first][posi.second-dy] = min(d[posi.first][posi.second-dy],d[posi.first][posi.second]+1);
                 break;
             case 'G':
                 //return d[posi.first][posi.second];
@@ -79,6 +112,16 @@ int BFS(){
         }
     }
     
+    for(int i=0;i<MAX_N*MAX_M;i++){
+      if(d[i/MAX_N][i%MAX_M] == INF) {
+          cout<< "\"-1\"";
+      }else{
+          cout<<"\"" << setfill('0') << setw(2) << d[i/MAX_N][i%MAX_M] <<"\"";
+      }  
+      if(i%MAX_M == MAX_M-1) cout <<'\n';
+    }
+  
+  
     return d[Gx][Gy];
     
 }
@@ -109,5 +152,6 @@ int main(){
     init();
     //DFS(Sx,Sy);
     cout<<DFS(Sx,Sy);
+    cout<<endl;
     return 0;
 }
