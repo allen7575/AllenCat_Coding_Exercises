@@ -1,0 +1,1 @@
+g++ knapsack2(p62).cpp -o knapsack2(p62).exe

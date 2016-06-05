@@ -1,1 +1,0 @@
-g++ Dict(p44).cpp -o Dict(p44).exe
