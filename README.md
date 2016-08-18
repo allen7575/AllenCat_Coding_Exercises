@@ -1,2 +1,2 @@
-# Execrisice-of-Engr.Cat
-This is the coding execrise repo of Engr.Cat
+# AllenCat's Coding Exercise
+This is the repo of AllenCat's coding exercise.
