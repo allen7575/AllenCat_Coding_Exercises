@@ -76,7 +76,7 @@ void append_node(Node **HeadDPtr, Node **TailDPtr, char newWord[WORD_LEN]){
 	}else{
 		//TailDPtr->next points to temp node
 		(*TailDPtr)->next = tempNode;
-		printf("debug_5.\n");
+		//printf("debug_5.\n");
 		
 		//TailDPtr points to tempNode
 		*TailDPtr = tempNode;
