@@ -11,7 +11,8 @@
         {
             "name": "Win32",
             "includePath": ["c:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/include",
-                            "C:/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"]
+                            "C:/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++",
+                            "C:/MinGW/include"]
         }
     ],
     "clang_format" : {
